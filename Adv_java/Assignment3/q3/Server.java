@@ -20,12 +20,12 @@ public class Server {
 
             // Send the AES key to the client
             ObjectOutputStream keyOut = new ObjectOutputStream(socket.getOutputStream());
-            keyOut.write(secretKey);
+            keyOut.writeObject(secretKey);
             keyOut.flush();
 
             // Send encrypted file contents
             PrintWriter outSocket = new PrintWriter(socket.getOutputStream(), true);
-            File file = new File("path/to/your/sample.txt");
+            File file = new File("./sample.txt");
             BufferedReader fileReader = new BufferedReader(new FileReader(file));
 
             String line;
